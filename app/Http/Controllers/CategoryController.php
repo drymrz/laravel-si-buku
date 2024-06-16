@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.categories.index', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -21,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.categories.create');
     }
 
     /**
@@ -29,7 +32,13 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $request['slug'] = Str::slug($request->name) . '-' . Str::random(5);
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|unique:categories',
+        ]);
+        Category::create($validatedData);
+        return redirect('/dashboard/categories');
     }
 
     /**
@@ -45,7 +54,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('dashboard.categories.edit', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -53,7 +64,13 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $request['slug'] = Str::slug($request->name) . '-' . Str::random(5);
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|unique:categories',
+        ]);
+        $category->update($validatedData);
+        return redirect('/dashboard/categories');
     }
 
     /**
@@ -61,6 +78,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+        return redirect('/dashboard/categories');
     }
 }

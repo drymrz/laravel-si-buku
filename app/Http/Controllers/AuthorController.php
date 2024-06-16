@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAuthorRequest;
 use App\Http\Requests\UpdateAuthorRequest;
 use App\Models\Author;
-use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class AuthorController extends Controller

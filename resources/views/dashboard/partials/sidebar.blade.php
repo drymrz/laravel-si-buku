@@ -18,7 +18,7 @@
                             </svg>
                         </li>
                         <li class="{{ Request::is('dashboard/') ? 'mm-active' : '' }}">
-                            <a href="dashboard.html">
+                            <a href="/dashboard">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
                                     <path
@@ -30,7 +30,7 @@
                             </a>
                         </li>
                         <li class="{{ Request::is('dashboard/books*') ? 'mm-active' : '' }}">
-                            <a href="add-listing.html">
+                            <a href="/dashboard/books">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -50,7 +50,7 @@
                             </a>
                         </li>
                         <li class="{{ Request::is('dashboard/categories*') ? 'mm-active' : '' }}">
-                            <a href="messages.html">
+                            <a href="/dashboard/categories">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-list-nested" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -60,7 +60,7 @@
                             </a>
                         </li>
                         <li class="{{ Request::is('dashboard/publishers*') ? 'mm-active' : '' }}">
-                            <a href="reviews.html">
+                            <a href="/dashboard/publishers">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
                                     <path

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     protected $fillable = [
-        'title', 'author_id', 'publisher_id', 'category_id', 'price', 'stock',
+        'title', 'slug', 'author_id', 'publisher_id', 'category_id', 'price', 'stock',
     ];
 
     public function author()
@@ -28,5 +28,10 @@ class Book extends Model
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

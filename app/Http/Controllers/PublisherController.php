@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePublisherRequest;
 use App\Http\Requests\UpdatePublisherRequest;
 use App\Models\Publisher;
+use Illuminate\Support\Str;
 
 class PublisherController extends Controller
 {
@@ -13,7 +14,9 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.publishers.index', [
+            'publishers' => Publisher::all()
+        ]);
     }
 
     /**
@@ -21,7 +24,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.publishers.create');
     }
 
     /**
@@ -29,7 +32,13 @@ class PublisherController extends Controller
      */
     public function store(StorePublisherRequest $request)
     {
-        //
+        $request['slug'] = Str::slug($request->name) . '-' . Str::random(5);
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|unique:publishers',
+        ]);
+        Publisher::create($validatedData);
+        return redirect('/dashboard/publishers');
     }
 
     /**
@@ -45,7 +54,9 @@ class PublisherController extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        //
+        return view('dashboard.publishers.edit', [
+            'publisher' => $publisher
+        ]);
     }
 
     /**
@@ -53,7 +64,13 @@ class PublisherController extends Controller
      */
     public function update(UpdatePublisherRequest $request, Publisher $publisher)
     {
-        //
+        $request['slug'] = Str::slug($request->name) . '-' . Str::random(5);
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|unique:publishers',
+        ]);
+        Publisher::where('id', $publisher->id)->update($validatedData);
+        return redirect('/dashboard/publishers');
     }
 
     /**
@@ -61,6 +78,7 @@ class PublisherController extends Controller
      */
     public function destroy(Publisher $publisher)
     {
-        //
+        Publisher::destroy($publisher->id);
+        return redirect('/dashboard/publishers');
     }
 }

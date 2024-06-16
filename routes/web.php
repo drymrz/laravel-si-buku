@@ -4,9 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
-    redirect('/dashboard');
+    return redirect('/dashboard');
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -21,3 +24,6 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 Route::resource('/dashboard/authors', AuthorController::class)->middleware('auth');
+Route::resource('/dashboard/publishers', PublisherController::class)->middleware('auth');
+Route::resource('/dashboard/books', BookController::class)->middleware('auth');
+Route::resource('/dashboard/categories', CategoryController::class)->middleware('auth');

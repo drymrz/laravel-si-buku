@@ -5,10 +5,10 @@
             <div class="card-header position-relative">
                 <div class="d-flex justify-content-between align-items-center flex-wrap">
                     <div>
-                        <h6 class="fs-17 fw-semi-bold my-1">Penulis</h6>
+                        <h6 class="fs-17 fw-semi-bold my-1">Buku</h6>
                     </div>
                     <div class="text-end">
-                        <a href="/dashboard/authors/create" class="btn btn-primary fw-medium"><i
+                        <a href="/dashboard/books/create" class="btn btn-primary fw-medium"><i
                                 class="fa-solid fa-plus me-1"></i>Create
                             New
                             Data</a>
@@ -21,36 +21,40 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Slug</th>
-                                <th>Nama Penulis</th>
-                                <th>Bio</th>
-                                <th>Jumlah Buku</th>
+                                <th>Judul Buku</th>
+                                <th>Penulis</th>
+                                <th>Penerbit</th>
+                                <th>Harga</th>
+                                <th>Stok</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($authors as $author)
+                            @foreach ($books as $book)
                                 <tr>
                                     <th>
                                         {{ $loop->iteration }}
                                     </th>
                                     <td>
-                                        {{ $author->slug }}
+                                        <div class="fw-medium">{{ $book->title }}</div>
                                     </td>
                                     <td>
-                                        <div class="fw-medium">{{ $author->name }}</div>
+                                        {{ $book->author->name }}
                                     </td>
                                     <td>
-                                        {{ $author->bio }}
+                                        {{ $book->publisher->name }}
                                     </td>
                                     <td>
-                                        {{ $author->books->count() }}
+                                        {{ $book->price }}
+                                    </td>
+                                    <td>
+                                        {{ $book->stock }}
                                     </td>
                                     <td>
                                         <div class="d-flex gap-1">
-                                            <a href="/dashboard/authors/{{ $author->slug }}/edit"
+                                            <a href="/dashboard/books/{{ $book->slug }}/edit"
                                                 class="btn btn-primary btn-sm"><i class="fa-solid fa-edit mt-1"></i></a>
-                                            <form action="/dashboard/authors/{{ $author->slug }}" method="POST">
+                                            <form action="/dashboard/books/{{ $book->slug }}" method="POST">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary btn-sm">
