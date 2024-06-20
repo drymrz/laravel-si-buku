@@ -29,3 +29,7 @@ Route::resource('/dashboard/publishers', PublisherController::class)->middleware
 Route::resource('/dashboard/books', BookController::class)->middleware('auth');
 Route::resource('/dashboard/categories', CategoryController::class)->middleware('auth');
 Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
+Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
+Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
+Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
+
