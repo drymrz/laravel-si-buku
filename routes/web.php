@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return redirect('/dashboard');
@@ -27,3 +28,4 @@ Route::resource('/dashboard/authors', AuthorController::class)->middleware('auth
 Route::resource('/dashboard/publishers', PublisherController::class)->middleware('auth');
 Route::resource('/dashboard/books', BookController::class)->middleware('auth');
 Route::resource('/dashboard/categories', CategoryController::class)->middleware('auth');
+Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
