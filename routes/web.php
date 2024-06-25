@@ -8,6 +8,7 @@ use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
 
 Route::get('/', function () {
     return redirect('/dashboard');
@@ -19,6 +20,9 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/orders/{orderId}/items', [OrderItemController::class, 'index'])->name('order_items.index');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
@@ -32,4 +36,6 @@ Route::resource('/dashboard/orders', OrderController::class)->middleware('auth')
 Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
 Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
 Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
+Route::resource('/dashboard/order_items', OrderItemController::class)->middleware('auth');
+Route::resource('orders', OrderController::class);
 

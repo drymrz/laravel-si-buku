@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
+use App\Models\User;
 
 class OrderController extends Controller
 {
@@ -13,7 +14,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        // Mengambil semua data orders dari database
+        $orders = Order::all();
+        
+        // Mengirim data orders ke view 'dashboard.orders.index'
+        return view('dashboard.orders.index', compact('orders'));
     }
 
     /**
@@ -21,7 +26,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all(); 
+
+        return view('dashboard.orders.create', compact('users'));
     }
 
     /**
@@ -45,7 +52,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return view('dashboard.orders.edit', compact('order'));
     }
 
     /**
@@ -64,3 +71,4 @@ class OrderController extends Controller
         //
     }
 }
+

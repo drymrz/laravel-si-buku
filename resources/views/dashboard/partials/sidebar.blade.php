@@ -69,7 +69,18 @@
                                 <span class="ms-2">Publishers</span>
                             </a>
                         </li>
-
+                        <li class="{{ Request::is('dashboard/orders*') ? 'mm-active' : '' }}">
+                                <a href="{{ route('orders.index') }}">
+                                    <svg>...</svg>
+                                    <span class="ms-2">Orders</span>
+                                </a>
+                            </li>
+                            <li class="{{ Request::is('dashboard/order-items*') ? 'mm-active' : '' }}">
+                                <a href="{{ route('order_items.index') }}">
+                                    <svg>...</svg>
+                                    <span class="ms-2">Order Items</span>
+                                </a>
+                            </li>
                         <li class="nav-label">
                             <span class="nav-label_text">Account</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreOrderItemRequest;
 use App\Http\Requests\UpdateOrderItemRequest;
 use App\Models\OrderItem;
+use App\Models\Book;
+use Illuminate\Http\Request;
 
 class OrderItemController extends Controller
 {
@@ -13,7 +15,10 @@ class OrderItemController extends Controller
      */
     public function index()
     {
-        //
+        $orderItems = OrderItem::all();
+        $orderId = null; // Set to null if you don't have a specific order ID context here
+
+        return view('dashboard.order_items.index', compact('orderItems', 'orderId'));
     }
 
     /**
@@ -21,7 +26,8 @@ class OrderItemController extends Controller
      */
     public function create()
     {
-        //
+        $books = Book::all(); // Ambil semua buku
+        return view('dashboard.order_items.create', compact('books'));
     }
 
     /**
@@ -29,7 +35,10 @@ class OrderItemController extends Controller
      */
     public function store(StoreOrderItemRequest $request)
     {
-        //
+        OrderItem::create($request->validated());
+
+        return redirect()->route('order_items.index')
+                         ->with('success', 'Order item created successfully.');
     }
 
     /**
@@ -37,7 +46,7 @@ class OrderItemController extends Controller
      */
     public function show(OrderItem $orderItem)
     {
-        //
+        return view('dashboard.order_items.show', compact('orderItem'));
     }
 
     /**
@@ -45,7 +54,7 @@ class OrderItemController extends Controller
      */
     public function edit(OrderItem $orderItem)
     {
-        //
+        return view('dashboard.order_items.edit', compact('orderItem'));
     }
 
     /**
@@ -53,7 +62,10 @@ class OrderItemController extends Controller
      */
     public function update(UpdateOrderItemRequest $request, OrderItem $orderItem)
     {
-        //
+        $orderItem->update($request->validated());
+
+        return redirect()->route('order_items.index')
+                         ->with('success', 'Order item updated successfully.');
     }
 
     /**
@@ -61,6 +73,9 @@ class OrderItemController extends Controller
      */
     public function destroy(OrderItem $orderItem)
     {
-        //
+        $orderItem->delete();
+
+        return redirect()->route('order_items.index')
+                         ->with('success', 'Order item deleted successfully.');
     }
 }
