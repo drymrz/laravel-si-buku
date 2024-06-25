@@ -2,7 +2,7 @@
             <div class="sidebar-header">
                 <a href="dashboard.html" class="sidebar-brand">
 
-                    <span class="sidebar-brand_text">Toko <span>Martin</span></span>
+                    <span class="sidebar-brand_text">Toko <span>Solvatar</span></span>
                 </a>
             </div>
             <!--/.sidebar header-->

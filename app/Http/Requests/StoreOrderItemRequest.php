@@ -19,10 +19,12 @@ class StoreOrderItemRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
-        return [
-            //
-        ];
+    return [
+        'book_id' => 'required|exists:books,id',
+        'quantity' => 'required|integer|min:1',
+        'price' => 'required|numeric|min:0',
+    ];
     }
 }

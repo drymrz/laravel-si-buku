@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ $orderItem->id }}</td>
                 <td>{{ $orderItem->order_id }}</td>
-                <td>{{ $orderItem->book->title }}</td> <!-- Assuming 'title' is the attribute for book title -->
+                <td>{{ $orderItem->book->title }}</td> 
                 <td>{{ $orderItem->quantity }}</td>
                 <td>{{ $orderItem->price }}</td>
                 <td>
