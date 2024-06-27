@@ -87,8 +87,7 @@
                             <div class="">
                                 <label class="required fw-medium mb-2">Jumlah Stok</label>
                                 <input type="number" class="form-control @error('stock') is-invalid @enderror"
-                                    placeholder="1" required="" name="stock" id="stock"
-                                    value="{{ old('stock') }}" />
+                                    required="" name="stock" id="stock" value="{{ old('stock') }}" />
                                 @error('stock')
                                     <div class="invalid-feedback text-start">{{ $message }}</div>
                                 @enderror
@@ -98,8 +97,7 @@
                             <div class="">
                                 <label class="required fw-medium mb-2">Harga</label>
                                 <input type="number" class="form-control @error('stock') is-invalid @enderror"
-                                    placeholder="65000" required="" name="price" id="price"
-                                    value="{{ old('price') }}" />
+                                    required="" name="price" id="price" value="{{ old('price') }}" />
                                 @error('price')
                                     <div class="invalid-feedback text-start">{{ $message }}</div>
                                 @enderror

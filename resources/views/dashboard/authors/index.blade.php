@@ -21,7 +21,6 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Slug</th>
                                 <th>Nama Penulis</th>
                                 <th>Bio</th>
                                 <th>Jumlah Buku</th>
@@ -34,9 +33,6 @@
                                     <th>
                                         {{ $loop->iteration }}
                                     </th>
-                                    <td>
-                                        {{ $author->slug }}
-                                    </td>
                                     <td>
                                         <div class="fw-medium">{{ $author->name }}</div>
                                     </td>

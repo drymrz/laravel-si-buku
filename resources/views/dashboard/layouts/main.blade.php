@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ListOn - Directory & Listing HTML Template</title>
+    <title>Toko martin punya ni bos</title>
     <!-- App favicon -->
     <link rel="shortcut icon" href="/assets/dist/img/favicon.png">
     <!-- Global Styles(used by all pages) -->

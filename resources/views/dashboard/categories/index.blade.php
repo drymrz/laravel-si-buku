@@ -21,7 +21,6 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Slug</th>
                                 <th>Nama Kategori</th>
                                 <th>Jumlah Buku</th>
                                 <th>Action</th>
@@ -33,9 +32,6 @@
                                     <th>
                                         {{ $loop->iteration }}
                                     </th>
-                                    <td>
-                                        {{ $category->slug }}
-                                    </td>
                                     <td>
                                         <div class="fw-medium">{{ $category->name }}</div>
                                     </td>

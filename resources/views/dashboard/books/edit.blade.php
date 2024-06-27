@@ -87,7 +87,7 @@
                         <div class="col-sm-6">
                             <div class="">
                                 <label class="required fw-medium mb-2">Jumlah Stok</label>
-                                <input type="number" class="form-control @error('stock') is-invalid @enderror"
+                                <input readonly type="number" class="form-control @error('stock') is-invalid @enderror"
                                     placeholder="1" required="" name="stock" id="stock"
                                     value="{{ old('stock', $book->stock) }}" />
                                 @error('stock')

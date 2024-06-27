@@ -9,6 +9,7 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\Category;
 use App\Models\Publisher;
+use App\Models\Stockin;
 
 class BookController extends Controller
 {
@@ -47,9 +48,15 @@ class BookController extends Controller
             'publisher_id' => 'required|exists:publishers,id',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric',
-            'stock' => 'required|numeric',
         ]);
-        Book::create($validatedData);
+
+        $createBook = Book::create($validatedData);
+        Stockin::create([
+            'book_id' => $createBook->id,
+            'quantity' => $request->stock,
+        ]);
+
+
         return redirect('/dashboard/books');
     }
 
@@ -87,7 +94,6 @@ class BookController extends Controller
             'publisher_id' => 'required|exists:publishers,id',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric',
-            'stock' => 'required|numeric',
         ]);
         Book::where('id', $book->id)->update($validatedData);
         return redirect('/dashboard/books');

@@ -2,7 +2,7 @@
             <div class="sidebar-header">
                 <a href="dashboard.html" class="sidebar-brand">
 
-                    <span class="sidebar-brand_text">Toko <span>Solvatar</span></span>
+                    <span class="sidebar-brand_text">Toko <span>Martin</span></span>
                 </a>
             </div>
             <!--/.sidebar header-->
@@ -17,7 +17,7 @@
                                     d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                             </svg>
                         </li>
-                        <li class="{{ Request::is('dashboard/') ? 'mm-active' : '' }}">
+                        <li class="{{ Request::is('dashboard') ? 'mm-active' : '' }}">
                             <a href="/dashboard">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
@@ -70,26 +70,40 @@
                             </a>
                         </li>
                         <li class="{{ Request::is('dashboard/orders*') ? 'mm-active' : '' }}">
-                                <a href="{{ route('orders.index') }}">
-                                    <svg>...</svg>
-                                    <span class="ms-2">Orders</span>
-                                </a>
-                            </li>
-                            <li class="{{ Request::is('dashboard/order-items*') ? 'mm-active' : '' }}">
-                                <a href="{{ route('order_items.index') }}">
-                                    <svg>...</svg>
-                                    <span class="ms-2">Order Items</span>
-                                </a>
-                            </li>
-                        <li class="nav-label">
+                            <a href="{{ route('orders.index') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-clipboard2-plus" viewBox="0 0 16 16">
+                                    <path
+                                        d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z" />
+                                    <path
+                                        d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z" />
+                                    <path
+                                        d="M8.5 6.5a.5.5 0 0 0-1 0V8H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V9H10a.5.5 0 0 0 0-1H8.5z" />
+                                </svg>
+                                <span class="ms-2">Orders</span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('dashboard/stockin*') ? 'mm-active' : '' }}">
+                            <a href="{{ route('stockin.index') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
+                                    <path
+                                        d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
+                                </svg>
+                                <span class="ms-2">Stock In</span>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-label">
                             <span class="nav-label_text">Account</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                                 class="bi bi-three-dots nav-label_ellipsis m-auto" viewBox="0 0 16 16">
                                 <path
                                     d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
                             </svg>
-                        </li>
-                        <li class="{{ Request::is('dashboard/profile') ? 'mm-active' : '' }}">
+                        </li> --}}
+                        {{-- <li class="{{ Request::is('dashboard/profile') ? 'mm-active' : '' }}">
                             <a href="profile.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-clipboard2-plus" viewBox="0 0 16 16">
@@ -102,19 +116,25 @@
                                 </svg>
                                 <span class="ms-2">Edit Profile</span>
                             </a>
-                        </li>
-                        <li>
-                            <a href="../sign-in.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
-                                    <path fill-rule="evenodd"
-                                        d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
-                                </svg>
-                                <span class="ms-2">Logout</span>
-                            </a>
-                        </li>
+                        </li> --}}
+                        {{-- <li>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <a>
+                                    <button type="submit">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+                                            <path fill-rule="evenodd"
+                                                d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                                        </svg>
+                                        <span class="ms-2">Logout</span>
+                                    </button>
+                                </a>
+                            </form>
+                        </li> --}}
                     </ul>
                 </nav>
             </div><!-- sidebar-body -->

@@ -9,6 +9,8 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StockInController;
 
 Route::get('/', function () {
     return redirect('/dashboard');
@@ -20,22 +22,14 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
-Route::get('/orders/{orderId}/items', [OrderItemController::class, 'index'])->name('order_items.index');
 
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::resource('/dashboard/authors', AuthorController::class)->middleware('auth');
 Route::resource('/dashboard/publishers', PublisherController::class)->middleware('auth');
 Route::resource('/dashboard/books', BookController::class)->middleware('auth');
 Route::resource('/dashboard/categories', CategoryController::class)->middleware('auth');
 Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
-Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
-Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
-Route::resource('/dashboard/orders', OrderController::class)->middleware('auth');
 Route::resource('/dashboard/order_items', OrderItemController::class)->middleware('auth');
-Route::resource('orders', OrderController::class);
-
+Route::resource('/dashboard/stockin', StockInController::class)->middleware('auth');
